@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block body %} 
+<div class="container my-4">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+    <div class="col-md-12" style="padding-left: 20%; padding-right: 20%;">
+        <label for="formFileLg" class="form-label">Files are accepted only in csv & xlsx format. </label>
+        <input class="form-control form-control-lg" id="formFileLg" type="file" name="file" accept=".csv,.xlsx"required="required">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control form-control-lg" placeholder="Attribute" name="attributeid" id="attributeid" required="required" >
+        </div>
+    </div>
+      <div class="col-12" style="padding-left: 20%; padding-right: 20%; padding-top:6px">
+        <button type="submit" class="btn btn-primary">Add_File</button>
+      </div>
+     
+    </form>
+</div>
+
+<script>
+  $('input[type=file]').change(function(){
+  alert('To check whether i am getting into the script '); //Comment this
+  var file = this.files[0];
+  name = file.name;
+  size = file.size;
+  type = file.type;
+  alert(type);
+    
+  });
+  </script>
+  
+  
+{% endblock body %}
